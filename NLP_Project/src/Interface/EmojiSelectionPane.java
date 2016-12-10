@@ -4,6 +4,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashSet;
@@ -18,6 +23,7 @@ import javax.swing.JFrame;
 import javax.swing.border.Border;
 
 import Helpers.SentimentEmojis;
+import Interface.UserInterface.ChatMessage;
 
 public class EmojiSelectionPane extends JFrame {
 
@@ -31,6 +37,7 @@ public class EmojiSelectionPane extends JFrame {
 	private JButton[] btns;
 	private SentimentEmojis sentimentEmojis;
 	private Random randomGenerator;
+	private UserInterface parent;
 	
 	private JButton btn1;
 	private JButton btn2;
@@ -38,9 +45,10 @@ public class EmojiSelectionPane extends JFrame {
 	private JButton btn4;
 	private JButton btn5;
 	
-	public EmojiSelectionPane(int width) {
+	public EmojiSelectionPane(int width, UserInterface parent) {
 		emojis = new String[5];
 		btns = new JButton[5];
+		this.parent = parent;
 		
 		sentimentEmojis = new SentimentEmojis();
 		randomGenerator = new Random();
@@ -61,6 +69,46 @@ public class EmojiSelectionPane extends JFrame {
 		btns[2] = btn3;
 		btns[3] = btn4;
 		btns[4] = btn5;
+
+		btns[0].addActionListener(new ActionListener()
+		{
+		  public void actionPerformed(ActionEvent e)
+		  {
+			  parent.addEmoji(parent.currentUser, emojis[0]);;
+		  }
+		});
+		
+		btns[1].addActionListener(new ActionListener()
+		{
+		  public void actionPerformed(ActionEvent e)
+		  {
+			  parent.addEmoji(parent.currentUser, emojis[1]);;
+		  }
+		});
+		
+		btns[2].addActionListener(new ActionListener()
+		{
+		  public void actionPerformed(ActionEvent e)
+		  {
+			  parent.addEmoji(parent.currentUser, emojis[2]);;
+		  }
+		});
+		
+		btns[3].addActionListener(new ActionListener()
+		{
+		  public void actionPerformed(ActionEvent e)
+		  {
+			  parent.addEmoji(parent.currentUser, emojis[3]);;
+		  }
+		});
+		
+		btns[4].addActionListener(new ActionListener()
+		{
+		  public void actionPerformed(ActionEvent e)
+		  {
+			  parent.addEmoji(parent.currentUser, emojis[4]);;
+		  }
+		});
 		
 		for(int i = 0; i < 5; ++i) {
 			btns[i].setPreferredSize(new Dimension(30, 30));

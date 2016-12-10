@@ -4,6 +4,7 @@ public class UserMessage {
 	
 	private String name;
 	private String message;
+	private Timestamp time;
 
 	public UserMessage(String name) {
 		this.name = name;
@@ -20,5 +21,13 @@ public class UserMessage {
 	
 	public String getMessage() {
 		return message;
+	}
+	
+	public Timestamp getTime() {
+		return time;
+	}
+	
+	public String toString() {
+		return name + " " + message;
 	}
 }

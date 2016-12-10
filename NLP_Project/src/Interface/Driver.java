@@ -7,16 +7,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Helpers.SentimentAnalyzer;
+import Helpers.NLPAnalyzer;
 import Helpers.UserMessage;
 
 public class Driver {
 
 	public static void main(String[] args) {
 		UserInterface UI;
+		NLPAnalyzer sa;
+		
+		// Init sentiment analyzer
+    	sa = new NLPAnalyzer();
+		NLPAnalyzer.init();
+		
 		// Populate with initial data
 		try {
-			UI = new UserInterface(parse("src/Data/dataset1"));
+			UI = new UserInterface(sa, "NLP Group", parse("src/Data/dataset1"), null);
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
